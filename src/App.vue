@@ -1,7 +1,18 @@
 <script setup>
 import { ref } from "vue";
+import { provide } from "vue";
 import ChangeColor from "./components/ChangeColor.vue";
 import RateUs from "./components/RateUs.vue";
+import NavBar from "./components/UI/NavBar.vue";
+
+const user = ref("Invitado");
+function updateUser(userName) {
+  user.value = userName;
+}
+provide("user", {
+  user,
+  updateUser,
+});
 const color = ref("blue");
 
 function changeBackground(param1) {
@@ -10,13 +21,11 @@ function changeBackground(param1) {
 </script>
 
 <template>
-  <div :style="{ backgroundColor: color }">
-    <ChangeColor @nextColor="changeBackground" />
-  </div>
   <div>
+    <NavBar />
     <!-- <h2>Rate us</h2> -->
-    <RateUs>Rate Us</RateUs>
-    <router-link to="/">Hola</router-link>
-    <!-- {{ reviews }} -->
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>

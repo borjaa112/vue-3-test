@@ -35,6 +35,7 @@ function sendFeedback() {
   </div>
 
   <p v-for="(review, index) in reviews" :key="index">
-    {{ review.name }} ha puntuado con {{ review.rating }} estrellas
+    {{ review.name }} ha puntuado esta pagina web con
+    {{ review.rating }} &#11088;
   </p>
 </template>
