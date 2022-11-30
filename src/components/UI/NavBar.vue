@@ -8,11 +8,15 @@ const loguedUser = useLoguedUserStore();
 </script>
 
 <template>
-  <div>
+  <div class="navbar">
+    <hr />
     <router-link to="/">Inicio </router-link>
     <router-link to="/about"> About</router-link>
     <router-link to="/login"> login</router-link>
     <router-link to="/counter"> counter</router-link>
+    <router-link to="/todo"> todoList</router-link>
+
+    <hr />
   </div>
   Provider Logued User: {{ user }}
   <br />
