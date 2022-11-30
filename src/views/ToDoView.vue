@@ -5,7 +5,13 @@ import { ref } from "vue";
 
 const toDoList = ref([]);
 function addToList(value) {
-  toDoList.value.push(value);
+  toDoList.value.push({ id: toDoList.value.length + 1, text: value });
+}
+
+function removeFromList(id) {
+  toDoList.value = toDoList.value.filter(function (obj) {
+    return obj.id !== id;
+  });
 }
 </script>
 
@@ -13,6 +19,9 @@ function addToList(value) {
   <div>
     <h3>TODO LIST</h3>
     <todoInput @addToList="(value) => addToList(value)"></todoInput>
-    <TodoTable :todoList="toDoList"></TodoTable>
+    <TodoTable
+      :todoList="toDoList"
+      @removeItem="(itemId) => removeFromList(itemId)"
+    ></TodoTable>
   </div>
 </template>
