@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from "vue";
 import InputBase from "../components/baseComponents/InputBase.vue";
+import SelectBase from "../components/baseComponents/SelectBase.vue";
 const name = ref("");
-const rating = ref("");
+const rating = ref();
 const reviews = ref([]);
 
 function sendFeedback() {
@@ -21,7 +22,7 @@ function sendFeedback() {
       <div>
         <InputBase type="text" placeholder="nombre" v-model="name" />
         Estrellas
-        <select name="" id="" v-model="rating">
+        <!-- <select name="" id="" v-model="rating">
           <optgroup>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -29,13 +30,14 @@ function sendFeedback() {
             <option value="4">4</option>
             <option value="5">5</option>
           </optgroup>
-        </select>
+        </select> -->
+        <SelectBase :options="[1, 2, 3, 4, 5]" v-model="rating"></SelectBase>
       </div>
       <button type="submit">enviar</button>
     </form>
   </div>
 
-  <p v-for="(review, index) in reviews.reverse()" :key="index">
+  <p v-for="(review, index) in reviews" :key="index">
     {{ review.name }} ha puntuado esta pagina web con
     {{ review.rating }} &#11088;
   </p>
