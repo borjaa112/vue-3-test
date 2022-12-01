@@ -22,15 +22,6 @@ function sendFeedback() {
       <div>
         <InputBase type="text" placeholder="nombre" v-model="name" />
         Estrellas
-        <!-- <select name="" id="" v-model="rating">
-          <optgroup>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </optgroup>
-        </select> -->
         <SelectBase :options="[1, 2, 3, 4, 5]" v-model="rating"></SelectBase>
       </div>
       <button type="submit">enviar</button>
