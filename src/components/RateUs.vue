@@ -1,9 +1,10 @@
 <script setup>
 import { ref } from "vue";
+import InputBase from "../components/baseComponents/InputBase.vue";
 const name = ref("");
 const rating = ref("");
 const reviews = ref([]);
-const hola = "adios";
+
 function sendFeedback() {
   reviews.value.push({
     id: reviews.value.length + 1,
@@ -18,7 +19,7 @@ function sendFeedback() {
     <h2><slot /></h2>
     <form @submit.prevent="sendFeedback">
       <div>
-        <input type="text" placeholder="nombre" v-model="name" />
+        <InputBase type="text" placeholder="nombre" v-model="name" />
         Estrellas
         <select name="" id="" v-model="rating">
           <optgroup>
@@ -34,7 +35,7 @@ function sendFeedback() {
     </form>
   </div>
 
-  <p v-for="(review, index) in reviews" :key="index">
+  <p v-for="(review, index) in reviews.reverse()" :key="index">
     {{ review.name }} ha puntuado esta pagina web con
     {{ review.rating }} &#11088;
   </p>
