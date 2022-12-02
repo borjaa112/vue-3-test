@@ -6,10 +6,14 @@ import { onMounted } from "vue";
 
 const dogImg = ref("");
 onMounted(() => {
+  generateImage();
+});
+
+function generateImage() {
   axios
     .get("https://dog.ceo/api/breeds/image/random")
     .then((response) => (dogImg.value = response.data.message));
-});
+}
 </script>
 <template>
   <div class="">
@@ -19,6 +23,8 @@ onMounted(() => {
 
   <h1>Random Dog Photo</h1>
   <img :src="dogImg" height="200" />
+  <br />
+  <button @click="generateImage()">Generate another photo</button>
 </template>
 
 <style>
