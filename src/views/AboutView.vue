@@ -1,9 +1,14 @@
 <script setup>
 import RateUs from "../components/RateUs.vue";
+import axios from "axios";
+import { ref } from "vue";
 import { onMounted } from "vue";
 
+const dogImg = ref("");
 onMounted(() => {
-  console.log("Hola");
+  axios
+    .get("https://dog.ceo/api/breeds/image/random")
+    .then((response) => (dogImg.value = response.data.message));
 });
 </script>
 <template>
@@ -11,6 +16,9 @@ onMounted(() => {
     <h1>This is an about page</h1>
   </div>
   <RateUs></RateUs>
+
+  <h1>Random Dog Photo</h1>
+  <img :src="dogImg" height="200" />
 </template>
 
 <style>

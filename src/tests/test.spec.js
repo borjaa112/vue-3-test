@@ -1,9 +1,10 @@
-import { assert, describe, it } from 'vitest'
+import { assert, describe, it, test } from 'vitest'
+import { mount } from '@vue/test-utils'
+import NavBar from '../components/UI/NavBar.vue'
 
 
-describe('test', () => {
-    it('test', () => {
-        // Suite skipped, no error
-        assert.equal(3, 3)
-    })
+test('test', async () => {
+    const page = mount(NavBar)
+    expect(page.text()).toContain('This is an about page')
+
 })
