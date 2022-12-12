@@ -15,6 +15,7 @@ const loguedUser = useLoguedUserStore();
     <router-link to="/login"> login</router-link>
     <router-link to="/counter"> counter</router-link>
     <router-link to="/todo"> todoList</router-link>
+    <router-link to="/personajes"> Personajes</router-link>
 
     <hr />
   </div>

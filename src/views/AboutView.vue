@@ -12,7 +12,8 @@ onMounted(() => {
 function generateImage() {
   axios
     .get("https://dog.ceo/api/breeds/image/random")
-    .then((response) => (dogImg.value = response.data.message));
+    .then((response) => (dogImg.value = response.data.message))
+    .catch((error) => console.log(error));
 }
 </script>
 <template>
