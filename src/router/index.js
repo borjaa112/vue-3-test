@@ -36,6 +36,11 @@ const router = createRouter({
       path: "/personajes",
       name: "personajes",
       component: () => import("../views/Personajes.vue")
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import("../views/404.vue")
     }
   ],
 });

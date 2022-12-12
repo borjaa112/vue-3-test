@@ -2,7 +2,7 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 const characters = ref("");
-onMounted(() => {
+onMounted(async () => {
   axios.get("https://rickandmortyapi.com/api/character/").then((data) => {
     characters.value = data.data.results;
   });
@@ -21,4 +21,5 @@ onMounted(() => {
       <p>{{ character.name }}</p>
     </div>
   </div>
+  <button @click="() => $router.push({ query: 'vvv' })">aa</button>
 </template>
