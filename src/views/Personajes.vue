@@ -7,9 +7,11 @@ onMounted(async () => {
   //   characters.value = data.data.results;
   // });
 
-  httpRequest.get("https://rickandmortyapi.com/api/character/").then((data) => {
-    characters.value = data.data.results;
-  });
+  httpRequest
+    .getByFetch("https://rickandmortyapi.com/api/character/")
+    .then((data) => {
+      characters.value = data.results;
+    });
 });
 </script>
 
