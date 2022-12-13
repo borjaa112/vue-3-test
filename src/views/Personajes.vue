@@ -1,9 +1,13 @@
 <script setup>
-import axios from "axios";
+import { httpRequest } from "../services/httpRequest";
 import { ref, onMounted } from "vue";
 const characters = ref("");
 onMounted(async () => {
-  axios.get("https://rickandmortyapi.com/api/character/").then((data) => {
+  // axios.get("https://rickandmortyapi.com/api/character/").then((data) => {
+  //   characters.value = data.data.results;
+  // });
+
+  httpRequest.get("https://rickandmortyapi.com/api/character/").then((data) => {
     characters.value = data.data.results;
   });
 });
@@ -17,9 +21,8 @@ onMounted(async () => {
       :key="character.id"
       style="float: left; margin-right: 30px"
     >
-      <img :src="character.image" alt="" />
+      <img :src="character.image" :alt="'Imagen de ' + character.name" />
       <p>{{ character.name }}</p>
     </div>
   </div>
-  <button @click="() => $router.push({ query: 'vvv' })">aa</button>
 </template>
