@@ -1,5 +1,10 @@
 <script setup>
-import { httpRequest } from "../services/httpRequest";
+// import { httpRequest } from "../services/httpRequest";
+import { GetCharactersHandler } from "../application/GetCharactersHandler";
+import { GetCharacterQuery } from "../application/GetCharacterQuery";
+
+import { AxiosHTTPRquester } from "../infrastructure/HTTPRequester/AxiosHTTPRquester";
+import { FetchHTTPRequester } from "../infrastructure/HTTPRequester/FetchHTTPRequester";
 import { ref, onMounted } from "vue";
 const characters = ref("");
 onMounted(async () => {
@@ -7,11 +12,16 @@ onMounted(async () => {
   //   characters.value = data.data.results;
   // });
 
-  httpRequest
-    .getByFetch("https://rickandmortyapi.com/api/character/")
-    .then((data) => {
-      characters.value = data.results;
-    });
+  // httpRequest
+  //   .getByFetch("https://rickandmortyapi.com/api/character/")
+  //   .then((data) => {
+  //     characters.value = data.results;
+  //   });
+
+  const request = new GetCharactersHandler(new FetchHTTPRequester());
+  request
+    .handle(new GetCharacterQuery("https://rickandmortyapi.com/api/character/"))
+    .then((data) => (characters.value = data.results));
 });
 </script>
 
